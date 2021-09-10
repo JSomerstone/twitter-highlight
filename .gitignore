@@ -4,3 +4,4 @@ secret.tfvars
 *.zip
 .env
 *.tfstate*
+.DS_Store

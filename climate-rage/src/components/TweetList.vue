@@ -2,48 +2,66 @@
   <div>
     <b-jumbotron header="#ClimateCrisis" lead="Meidän tulee jättää tuleville sukupolville elinkelpoinen planeetta!">
     </b-jumbotron>
-    <b-container v-if="!isLoading">
-      <b-row v-for="tweet in tweets" v-bind:key="tweet.id" class="justify-content-md-center" align-v="center">
-        <b-col cols="2">
-          <b-img :src="user.profile_image_url_https" class="profile-pic" rounded="circle"></b-img>
-        </b-col>
-        <b-col sm="10" md="8" lg="6">
-          <blockquote class="twitter-tweet">
-            <p dir="ltr" class="tweet">
-              {{ tweet.text | hideUrls }}
-            </p>
-            <p v-if="tweet.entities.media">
-              <b-img
-                v-for="pick in tweet.entities.media"
-                v-bind:key="pick.id_str"
-                :src="pick.media_url_https"
-                fluid-grow
-              ></b-img>
-            </p>
-            <p>
-              <span v-for="mention in tweet.entities.user_mentions" v-bind:key="mention.screen_name">
-                <a :href="`https://twitter.com/${mention.screen_name}`" target="_blank">
-                  {{mention.name}} (@{{mention.screen_name}})
-                </a>
-                &nbsp;
-              </span>
-            </p>
-            <p>
-              <span v-for="link in tweet.entities.urls" v-bind:key="link.expanded_url">
-                <a :href="link.expanded_url" target="_blank">
-                  {{link.display_url}}&nbsp;
-                  <b-icon icon="box-arrow-in-up-right"></b-icon>
-                </a>
-                &nbsp;
-              </span>
-            </p>
-            <div class="author">
-              &mdash; @{{ user.screen_name }} <a :href="`https://twitter.com/i/web/status/${tweet.id}`" target="_blank">{{ tweet.created_at | formatDate }}</a>
-            </div>
-          </blockquote> 
-        </b-col>
-      </b-row>
+    <b-container>
+      <b-skeleton-wrapper :loading="isLoading">
+        <template #loading>
+          <b-row v-for="tweet in tweets" v-bind:key="tweet.id" class="justify-content-md-center" align-v="center">
+            <b-col cols="2">
+              <b-spinner style="width: 3rem; height: 3rem;" type="grow"></b-spinner>
+            </b-col>
+            <b-col sm="10" md="8" lg="6">
+              <blockquote class="twitter-tweet">
+                <b-skeleton width="85%"></b-skeleton>
+                <b-skeleton width="55%"></b-skeleton>
+                <b-skeleton width="70%"></b-skeleton>
+                <b-skeleton class="skeleton-signature" width="45%"></b-skeleton>
+              </blockquote>
+            </b-col>
+          </b-row>
+        </template>
+        <b-row v-for="tweet in tweets" v-bind:key="tweet.id" class="justify-content-md-center" align-v="center">
+          <b-col cols="2">
+            <b-img :src="user.profile_image_url_https" class="profile-pic" rounded="circle"></b-img>
+          </b-col>
+          <b-col sm="10" md="8" lg="6">
+            <blockquote class="twitter-tweet">
+              <p dir="ltr" class="tweet">
+                {{ tweet.text | hideUrls }}
+              </p>
+              <p v-if="tweet.entities.media">
+                <b-img
+                  v-for="pick in tweet.entities.media"
+                  v-bind:key="pick.id_str"
+                  :src="pick.media_url_https"
+                  fluid-grow
+                ></b-img>
+              </p>
+              <p>
+                <span v-for="mention in tweet.entities.user_mentions" v-bind:key="mention.screen_name">
+                  <a :href="`https://twitter.com/${mention.screen_name}`" target="_blank">
+                    {{mention.name}} (@{{mention.screen_name}})
+                  </a>
+                  &nbsp;
+                </span>
+              </p>
+              <p>
+                <span v-for="link in tweet.entities.urls" v-bind:key="link.expanded_url">
+                  <a :href="link.expanded_url" target="_blank">
+                    {{link.display_url}}&nbsp;
+                    <b-icon icon="box-arrow-in-up-right"></b-icon>
+                  </a>
+                  &nbsp;
+                </span>
+              </p>
+              <div class="author">
+                &mdash; @{{ user.screen_name }} <a :href="`https://twitter.com/i/web/status/${tweet.id}`" target="_blank">{{ tweet.created_at | formatDate }}</a>
+              </div>
+            </blockquote> 
+          </b-col>
+        </b-row>
+      </b-skeleton-wrapper>
     </b-container>
+    
   </div>
 </template>
 <script>
@@ -170,5 +188,9 @@ div.author {
 	border-bottom: 0;
 	margin-top: -15.5px;
 	margin-left: -31px;
+}
+
+.sceleton-signature {
+  margin-left: 65%;
 }
 </style>

@@ -23,6 +23,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   padding-top: 60px;
+}
+body {
   background: url('~@/assets/stripes.png') repeat-y center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
