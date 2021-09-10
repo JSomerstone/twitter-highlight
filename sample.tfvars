@@ -1,0 +1,5 @@
+twitter_api_key="{your-twitter-developer-api-key}"
+twitter_api_secret="{your-twitter-developer-api-key-secret}"
+twitter_access_token="{your-twitter-access-token}"
+twitter_access_token_secret="{your-twitter-access-token-secret}"
+twitter_user="@JSomerstone"
