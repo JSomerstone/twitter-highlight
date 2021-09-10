@@ -78,12 +78,13 @@ export default {
   data() {
         return {
           tags: [
-              "ilmastokriisi",
-              "ClimateCrisis",
-              "elokapina",
-              "nytOnPakko",
-              "IlmastonMuutos",
-              "climate",
+            "ClimateCrisis",
+            "climate",
+            "ilmastokriisi",
+            "elokapina",
+            "nytOnPakko",
+            "IlmastonMuutos",
+            "ilmastonmuutos",
           ]
         }
  
