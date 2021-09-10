@@ -25,10 +25,10 @@ export default {
   padding-top: 60px;
 }
 body {
-  background: url('~@/assets/stripes.png') repeat-y center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background: url('~@/assets/stripes.png') repeat-y; 
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
 }
 </style>

@@ -66,6 +66,7 @@ resource "aws_lambda_function" "query_twitter" {
       TWITTER_ACCESS_TOKEN = var.twitter_access_token,
       TWITTER_ACCESS_SECRET = var.twitter_access_token_secret,
       TWITTER_USER = var.twitter_user,
+      CACHE_RESULTS_SECONDS = var.cache_results_seconds,
     }
   }
 }

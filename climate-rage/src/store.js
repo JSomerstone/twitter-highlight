@@ -56,11 +56,14 @@ const store = new Vuex.Store({
         tweets: ({tweets}) => tweets,
         tweetsWithHashtags: (state) => (hashtags) => {
             return state.tweets.filter( tweet => {
-                return Boolean(tweet.entities.hashtags.length)
+                let match = tweet.entities.hashtags.filter(({text}) => hashtags.includes(text)).length > 0;
+                hashtags.forEach(tag => {
+                    if (tweet.text.includes(tag)) {
+                        match = true;
+                    }
+                });
+                return match;
             })
-            .filter( tweet => {
-                return tweet.entities.hashtags.filter(({text}) => hashtags.includes(text)).length > 0
-            });
         },
     }
 });

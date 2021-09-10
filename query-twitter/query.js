@@ -44,7 +44,7 @@ module.exports.handler = async (event) => {
     console.log('Getting user info');
     let statusCode = 200;
     try {
-      if (~~(Date.now() / 1000) - now >= 60*15 || !cached.user){
+      if (~~(Date.now() / 1000) - now >= process.env.CACHE_RESULTS_SECONDS || !cached.user){
         cached = await loadTweets()
         now = ~~(Date.now() / 1000)
       } else {

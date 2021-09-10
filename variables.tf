@@ -34,3 +34,8 @@ variable "twitter_user" {
   type        = string
   sensitive   = false
 }
+variable "cache_results_seconds" {
+  description = "How many seconds to cache the Twitter API results"
+  type        = number
+  sensitive   = false
+}
