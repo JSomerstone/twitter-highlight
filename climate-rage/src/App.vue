@@ -31,4 +31,8 @@ body {
   -o-background-size: contain;
   background-size: contain;
 }
+@font-face {
+  font-family: 'Apocalypse Now';
+  src: url('~@/assets/apocalypse-now.ttf');
+}
 </style>
